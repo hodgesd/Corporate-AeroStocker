@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240DB17A2491CAD5004AC47A /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240DB1792491CAD5004AC47A /* EmptyListView.swift */; };
+		240DB17C2493F182004AC47A /* TextCapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240DB17B2493F181004AC47A /* TextCapsuleView.swift */; };
+		240DB18124944657004AC47A /* PreloadedDataMac.plist in Resources */ = {isa = PBXBuildFile; fileRef = 240DB18024944656004AC47A /* PreloadedDataMac.plist */; };
 		244C74C2248D50CC0052012C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C74C1248D50CC0052012C /* AppDelegate.swift */; };
 		244C74C4248D50CC0052012C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C74C3248D50CC0052012C /* SceneDelegate.swift */; };
 		244C74C7248D50CC0052012C /* Corporate_AeroStocker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 244C74C5248D50CC0052012C /* Corporate_AeroStocker.xcdatamodeld */; };
@@ -14,9 +17,15 @@
 		244C74CB248D50D40052012C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244C74CA248D50D40052012C /* Assets.xcassets */; };
 		244C74CE248D50D40052012C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244C74CD248D50D40052012C /* Preview Assets.xcassets */; };
 		244C74D1248D50D40052012C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 244C74CF248D50D40052012C /* LaunchScreen.storyboard */; };
+		244C74DA248D5B020052012C /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C74D9248D5B020052012C /* AddItemView.swift */; };
+		244C74DC248D68A60052012C /* PickerBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C74DB248D68A50052012C /* PickerBinding.swift */; };
+		249479BE24959EDF0093C47D /* SimpleLoad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 249479BD24959EDF0093C47D /* SimpleLoad.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		240DB1792491CAD5004AC47A /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		240DB17B2493F181004AC47A /* TextCapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCapsuleView.swift; sourceTree = "<group>"; };
+		240DB18024944656004AC47A /* PreloadedDataMac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PreloadedDataMac.plist; path = ../../../../../../Downloads/PreloadedDataMac.plist; sourceTree = "<group>"; };
 		244C74BE248D50CC0052012C /* Corporate AeroStocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corporate AeroStocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		244C74C1248D50CC0052012C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		244C74C3248D50CC0052012C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +35,9 @@
 		244C74CD248D50D40052012C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		244C74D0248D50D40052012C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		244C74D2248D50D40052012C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		244C74D9248D5B020052012C /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		244C74DB248D68A50052012C /* PickerBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerBinding.swift; sourceTree = "<group>"; };
+		249479BD24959EDF0093C47D /* SimpleLoad.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SimpleLoad.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,9 +51,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		240DB17D24943317004AC47A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				240DB18024944656004AC47A /* PreloadedDataMac.plist */,
+				249479BD24959EDF0093C47D /* SimpleLoad.plist */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		244C74B5248D50CC0052012C = {
 			isa = PBXGroup;
 			children = (
+				240DB17D24943317004AC47A /* Data */,
 				244C74C0248D50CC0052012C /* Corporate AeroStocker */,
 				244C74BF248D50CC0052012C /* Products */,
 			);
@@ -60,7 +82,7 @@
 			children = (
 				244C74C1248D50CC0052012C /* AppDelegate.swift */,
 				244C74C3248D50CC0052012C /* SceneDelegate.swift */,
-				244C74C8248D50CC0052012C /* ContentView.swift */,
+				244C74D8248D55820052012C /* Views */,
 				244C74CA248D50D40052012C /* Assets.xcassets */,
 				244C74CF248D50D40052012C /* LaunchScreen.storyboard */,
 				244C74D2248D50D40052012C /* Info.plist */,
@@ -76,6 +98,18 @@
 				244C74CD248D50D40052012C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		244C74D8248D55820052012C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				244C74C8248D50CC0052012C /* ContentView.swift */,
+				244C74D9248D5B020052012C /* AddItemView.swift */,
+				244C74DB248D68A50052012C /* PickerBinding.swift */,
+				240DB1792491CAD5004AC47A /* EmptyListView.swift */,
+				240DB17B2493F181004AC47A /* TextCapsuleView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +173,8 @@
 				244C74D1248D50D40052012C /* LaunchScreen.storyboard in Resources */,
 				244C74CE248D50D40052012C /* Preview Assets.xcassets in Resources */,
 				244C74CB248D50D40052012C /* Assets.xcassets in Resources */,
+				249479BE24959EDF0093C47D /* SimpleLoad.plist in Resources */,
+				240DB18124944657004AC47A /* PreloadedDataMac.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,9 +186,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				244C74C2248D50CC0052012C /* AppDelegate.swift in Sources */,
+				244C74DC248D68A60052012C /* PickerBinding.swift in Sources */,
+				240DB17A2491CAD5004AC47A /* EmptyListView.swift in Sources */,
 				244C74C4248D50CC0052012C /* SceneDelegate.swift in Sources */,
 				244C74C9248D50CC0052012C /* ContentView.swift in Sources */,
+				240DB17C2493F182004AC47A /* TextCapsuleView.swift in Sources */,
 				244C74C7248D50CC0052012C /* Corporate_AeroStocker.xcdatamodeld in Sources */,
+				244C74DA248D5B020052012C /* AddItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

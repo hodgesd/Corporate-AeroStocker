@@ -9,13 +9,24 @@
 import UIKit
 import CoreData
 
+
 @UIApplicationMain
+
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    struct NewItem: Decodable {
+        var name: String
+        var category: String
+        var compartment: String
+//        var full: Int16
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print("Before 'preloadData'")
+        preloadData()
+        print("After 'preloadData'")
         return true
     }
 
@@ -33,6 +44,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    private func preloadData() {
+
+        print("running 'preloadData()'")
+        let preloadedDataKey = "didPreloadData"
+
+        let userDefaults = UserDefaults.standard
+        print("before checking didPreload")
+        if userDefaults.bool(forKey: preloadedDataKey) == false {
+            print("after checking didPreload")
+
+            let backgroundContext = persistentContainer.newBackgroundContext()
+
+            persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+            //            print("Hey.")
+            print("before background process")
+
+            backgroundContext.perform {
+                print("start background process")
+
+
+                let url = Bundle.main.url(forResource: "PreloadedDataMac", withExtension: "plist")!
+       //             print(url)
+                let data = try! Data(contentsOf: url)
+                let decoder = PropertyListDecoder()
+                let newItems: [NewItem] = try! decoder.decode([NewItem].self, from: data)
+
+                do {
+
+                    for item in newItems {
+
+                        let itemObject = StockItem (context: backgroundContext)
+
+                        itemObject.name = item.name
+                        itemObject.category = item.category
+                        itemObject.compartment = item.compartment
+                        itemObject.id = UUID()
+                        itemObject.full = "4"
+                    }
+                    print(newItems.count)
+
+                    try  backgroundContext.save()
+                    userDefaults.set(true, forKey: preloadedDataKey)
+
+
+                } catch {
+                    print ("save error - ", error.localizedDescription)
+                }
+//                print("Failed If...")
+//            }// IF
+        } // BACKGROUNDCONTEXT
+    } //: IF
+    } //: preloadData
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
