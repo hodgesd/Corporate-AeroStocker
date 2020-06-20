@@ -21,8 +21,10 @@ struct ContentView: View {
 
     @State private var showingAddItemView: Bool = false
     @State private var animatingButton: Bool = false
+//    @State private var needItem: Bool = false
 
-    /// Group function
+
+    /// Groups stockitems by Category then sorts within each category by their name.
     /// - Parameter result: Unordered stock items
     /// - Returns: Stock Items grouped by compartment and sorted by name
     func group(_ result : FetchedResults<StockItem>)-> [[StockItem]] {
@@ -42,12 +44,30 @@ struct ContentView: View {
                     ForEach (group(stockItems), id:\.self) { (section: [StockItem]) in
                         Section (header: Text (section[0].compartment!)) {
                             ForEach(section, id:\.self) {stockItem in
+
                                 HStack{
+
+
+                                    Button(action: {}) {
+                                        
+                                        Image(systemName: "plus.circle")
+                                            .foregroundColor(Color(UIColor.secondaryLabel))
+
+                                    }
+//                                    .background(Capsule().stroke(lineWidth: 2))
+
                                     Text(stockItem.name ?? "Unknown")
                                         .fontWeight(.semibold)
                                         .font(.headline)
                                         .padding (.horizontal, 7)
                                     TextCapsuleView(tag: stockItem.category ?? "Unknown")
+
+                                    Spacer()
+
+
+
+//                                    TextCapsuleView(tag: stockItem.full )
+
                                 } //: HSTACK    }
 
                             } //: FOREACH

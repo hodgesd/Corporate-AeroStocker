@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var category: String
         var compartment: String
 //        var full: Int16
+//        var need: Int16
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -63,7 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             backgroundContext.perform {
                 print("start background process")
 
-
                 let url = Bundle.main.url(forResource: "PreloadedDataMac", withExtension: "plist")!
        //             print(url)
                 let data = try! Data(contentsOf: url)
@@ -72,21 +72,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                 do {
 
-                    for item in newItems {
+                    for newItem in newItems {
 
                         let itemObject = StockItem (context: backgroundContext)
 
-                        itemObject.name = item.name
-                        itemObject.category = item.category
-                        itemObject.compartment = item.compartment
+                        itemObject.name = newItem.name
+                        itemObject.category = newItem.category
+                        itemObject.compartment = newItem.compartment
                         itemObject.id = UUID()
-                        itemObject.full = "4"
+//                        itemObject.full = 0
+//                        itemObject.need = 1
                     }
                     print(newItems.count)
 
                     try  backgroundContext.save()
-                    userDefaults.set(true, forKey: preloadedDataKey)
-
+                    userDefaults.set(false, forKey: preloadedDataKey)
 
                 } catch {
                     print ("save error - ", error.localizedDescription)
@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  * The store could not be migrated to the current model version.
                  Check the error message to determine what the actual problem was.
                  */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                fatalError("loadPersistentStores error \(error), \(error.userInfo)")
             }
         })
         return container

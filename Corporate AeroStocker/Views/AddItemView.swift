@@ -17,14 +17,16 @@ struct AddItemView: View {
 
     @State private var name: String = ""
     @State private var category: String = "Beverages"
-    @State private var count: String = "Each"
+//    @State private var count: String = "Each"
     @State private var compartment: String = "Galley"
-    @State private var full: Int = 6
-    @State private var onhand: Int = 6
+    @State private var full: Int16 = 0
+//    @State private var need: Int16 = 0
+//    @State private var onhand: Int = 6
 
-    let counts = ["Each", "Cases"]
+//    let counts = ["Each", "Cases"]
     let categories = ["Beverages", "Utinsils", "Snacks"]
     let zones = ["Galley", "Credenza", "Lav", "Overstock"]
+//    let fulls = [0,1,2,3,4,5,6,7,8,9,10]
 
     @State private var errorShowing: Bool = false
     @State private var errorTitle: String = ""
@@ -48,13 +50,15 @@ struct AddItemView: View {
 
                     PickerBinding(pickerTitle: "Zone", pickerSelection: $compartment, pickerArray: zones)
 
+//                    PickerBinding(pickerTitle: "Full", pickerSelection: $full, pickerArray: fulls)
+
                     Picker(selection: $full, label: Text("Full")) {
                         ForEach(1...10, id: \.self) { ix in
                             Text("\(ix)").tag(ix)
                         }
                     }.pickerStyle(SegmentedPickerStyle())
 
-                    PickerBinding(pickerTitle: "Count", pickerSelection: $count, pickerArray: counts)
+//                    PickerBinding(pickerTitle: "Count", pickerSelection: $count, pickerArray: counts)
 
                     //                ScrollView(.horizontal) {
                     //                    HStack(spacing: 20) {
@@ -75,7 +79,8 @@ struct AddItemView: View {
                             stockItem.name = self.name
                             stockItem.category = self.category
                             stockItem.compartment = self.compartment
-                            stockItem.full = String(self.full)
+//                            stockItem.full = self.full
+//                            stockItem.need = 0
 
                             do {
                                 try self.managedObjectContext.save()
