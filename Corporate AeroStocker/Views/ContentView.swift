@@ -34,42 +34,81 @@ struct ContentView: View {
             .map {$0.value}
     }
 
+    var tempNeeded: Int16 = 7
+
+
     // MARK: - BODY
 
     var body: some View {
-
         NavigationView {
             ZStack {
                 List {
                     ForEach (group(stockItems), id:\.self) { (section: [StockItem]) in
-                        Section (header: Text (section[0].compartment!)) {
-                            ForEach(section, id:\.self) {stockItem in
+                        Section(header: Text(section[0].compartment!)) {
+                            ForEach(section, id: \.self) { stockItem in
 
-                                HStack{
-
-
+                                HStack {
                                     Button(action: {}) {
-                                        
                                         Image(systemName: "plus.circle")
-                                            .foregroundColor(Color(UIColor.secondaryLabel))
-
+                                            .foregroundColor(stockItem.needResupply ? Color(UIColor.blue) : Color(.secondaryLabel))
+                                            .rotationEffect(.degrees(stockItem.needResupply ? 90 : 0))
+                                            .scaleEffect(stockItem.needResupply ? 1.5 : 1)
+                                            .animation(.easeInOut)
+                                            .onTapGesture {
+                                                if !stockItem.needResupply {
+                                                    stockItem.needResupply = true
+                                                }
+                                                if (stockItem.needed + 1) < stockItem.full {
+                                                    stockItem.needed = stockItem.needed + 1
+                                                }
+                                        }
                                     }
-//                                    .background(Capsule().stroke(lineWidth: 2))
-
+                                    //                                    .background(Capsule().stroke(lineWidth: 2))
                                     Text(stockItem.name ?? "Unknown")
-                                        .fontWeight(.semibold)
+                                        .fontWeight(.bold)
                                         .font(.headline)
-                                        .padding (.horizontal, 7)
+                                        .padding(.horizontal, 7)
                                     TextCapsuleView(tag: stockItem.category ?? "Unknown")
 
                                     Spacer()
 
+                                    if stockItem.needResupply {
+                                        Button(action:{}) {
+                                            Text("\(stockItem.needed)")
+                                                .font(.body)
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(Color(UIColor.white))
+                                                .padding(2)
+                                                .frame(minWidth: 35)
+                                                .background(Color.blue)
+                                                .overlay(
+                                                    Capsule(style: .circular)
+                                                        .stroke(Color(UIColor.secondaryLabel),
+                                                                lineWidth: 0.75)
+                                            )
+                                                .clipShape(Capsule())
+                                                .animation(.easeInOut)
+                                                .onTapGesture {
+                                                    if stockItem.needed > 1 {
+                                                        stockItem.needed = stockItem.needed - 1
+                                                    } else {
+                                                        stockItem.needResupply = false
+                                                    }
+                                            }
+                                        }
+                                    }
 
 
-//                                    TextCapsuleView(tag: stockItem.full )
 
+
+//                                            .onTapGesture {
+//                                                stockItem.needed! -= 1
+//                                        }
+
+//                                        ResupplyView(need: stockItem.needed)
+//                                            .transition(.scale)
+//                                    }
                                 } //: HSTACK    }
-
                             } //: FOREACH
                                 .onDelete(perform: self.deleteStockItem)
                         } //: SECTION
@@ -91,9 +130,9 @@ struct ContentView: View {
                         }
                 )
                 // MARK: - NO STOCK ITEMS
-//                if stockItems.count == 0 {
-//                    EmptyListView()
-//                }
+                //                if stockItems.count == 0 {
+                //                    EmptyListView()
+                //                }
             } //: ZSTACK
                 .sheet(isPresented: $showingAddItemView) {
                     AddItemView().environment(\.managedObjectContext, self.managedObjectContext)
@@ -113,22 +152,22 @@ struct ContentView: View {
                             .frame(width: 88, height: 88, alignment: .center)
                     }
                     .animation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: true))
-                Button(action: {
-                    self.showingAddItemView.toggle()
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .background(Circle().fill(Color("ColorBase")))
-                        .frame(width: 48, height: 48, alignment: .center)
-                } //: BUTTON
-                    .onAppear(perform: {
-                        self.animatingButton.toggle()
-                    })
+                    Button(action: {
+                        self.showingAddItemView.toggle()
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .background(Circle().fill(Color("ColorBase")))
+                            .frame(width: 48, height: 48, alignment: .center)
+                    } //: BUTTON
+                        .onAppear(perform: {
+                            self.animatingButton.toggle()
+                        })
                 } //: ZSTACK
                     .padding(.bottom, 15)
                     .padding(.trailing, 15)
-                    , alignment: .bottomTrailing
+                , alignment: .bottomTrailing
             )
         } //: NAVIGATION
     }

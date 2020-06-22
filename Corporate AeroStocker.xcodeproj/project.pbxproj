@@ -10,6 +10,7 @@
 		240DB17A2491CAD5004AC47A /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240DB1792491CAD5004AC47A /* EmptyListView.swift */; };
 		240DB17C2493F182004AC47A /* TextCapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240DB17B2493F181004AC47A /* TextCapsuleView.swift */; };
 		240DB18124944657004AC47A /* PreloadedDataMac.plist in Resources */ = {isa = PBXBuildFile; fileRef = 240DB18024944656004AC47A /* PreloadedDataMac.plist */; };
+		2412F5DD249E94B400BA49F3 /* ResupplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2412F5DC249E94B400BA49F3 /* ResupplyView.swift */; };
 		244C74C2248D50CC0052012C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C74C1248D50CC0052012C /* AppDelegate.swift */; };
 		244C74C4248D50CC0052012C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C74C3248D50CC0052012C /* SceneDelegate.swift */; };
 		244C74C7248D50CC0052012C /* Corporate_AeroStocker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 244C74C5248D50CC0052012C /* Corporate_AeroStocker.xcdatamodeld */; };
@@ -25,6 +26,7 @@
 		240DB1792491CAD5004AC47A /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		240DB17B2493F181004AC47A /* TextCapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCapsuleView.swift; sourceTree = "<group>"; };
 		240DB18024944656004AC47A /* PreloadedDataMac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PreloadedDataMac.plist; path = ../../../../../../Downloads/PreloadedDataMac.plist; sourceTree = "<group>"; };
+		2412F5DC249E94B400BA49F3 /* ResupplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyView.swift; sourceTree = "<group>"; };
 		244C74BE248D50CC0052012C /* Corporate AeroStocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corporate AeroStocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		244C74C1248D50CC0052012C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		244C74C3248D50CC0052012C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				244C74DB248D68A50052012C /* PickerBinding.swift */,
 				240DB1792491CAD5004AC47A /* EmptyListView.swift */,
 				240DB17B2493F181004AC47A /* TextCapsuleView.swift */,
+				2412F5DC249E94B400BA49F3 /* ResupplyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				240DB17A2491CAD5004AC47A /* EmptyListView.swift in Sources */,
 				244C74C4248D50CC0052012C /* SceneDelegate.swift in Sources */,
 				244C74C9248D50CC0052012C /* ContentView.swift in Sources */,
+				2412F5DD249E94B400BA49F3 /* ResupplyView.swift in Sources */,
 				240DB17C2493F182004AC47A /* TextCapsuleView.swift in Sources */,
 				244C74C7248D50CC0052012C /* Corporate_AeroStocker.xcdatamodeld in Sources */,
 				244C74DA248D5B020052012C /* AddItemView.swift in Sources */,

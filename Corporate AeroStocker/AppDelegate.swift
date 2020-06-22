@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var name: String
         var category: String
         var compartment: String
-//        var full: Int16
+        var full: String
 //        var need: Int16
     }
 
@@ -80,13 +80,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         itemObject.category = newItem.category
                         itemObject.compartment = newItem.compartment
                         itemObject.id = UUID()
-//                        itemObject.full = 0
-//                        itemObject.need = 1
+                        itemObject.needResupply = false
+                        itemObject.full = Int16(newItem.full) ?? 9
+                        itemObject.needed = 0
                     }
                     print(newItems.count)
 
                     try  backgroundContext.save()
-                    userDefaults.set(false, forKey: preloadedDataKey)
+                    userDefaults.set(true, forKey: preloadedDataKey)
 
                 } catch {
                     print ("save error - ", error.localizedDescription)
