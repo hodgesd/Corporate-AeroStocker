@@ -46,68 +46,7 @@ struct ContentView: View {
                         Section(header: Text(section[0].compartment!)) {
                             ForEach(section, id: \.self) { stockItem in
 
-                                HStack {
-                                    Button(action: {}) {
-                                        Image(systemName: "plus.circle")
-                                            .foregroundColor(stockItem.needResupply ? Color(UIColor.blue) : Color(.secondaryLabel))
-                                            .rotationEffect(.degrees(stockItem.needResupply ? 90 : 0))
-                                            .scaleEffect(stockItem.needResupply ? 1.5 : 1)
-                                            .animation(.easeInOut)
-                                            .onTapGesture {
-                                                if !stockItem.needResupply {
-                                                    stockItem.needResupply = true
-                                                }
-                                                if (stockItem.needed + 1) < stockItem.full {
-                                                    stockItem.needed = stockItem.needed + 1
-                                                }
-                                        }
-                                    }
-                                    //                                    .background(Capsule().stroke(lineWidth: 2))
-                                    Text(stockItem.name ?? "Unknown")
-                                        .fontWeight(.bold)
-                                        .font(.headline)
-                                        .padding(.horizontal, 7)
-                                    TextCapsuleView(tag: stockItem.category ?? "Unknown")
-
-                                    Spacer()
-
-                                    if stockItem.needResupply {
-                                        Button(action:{}) {
-                                            Text("\(stockItem.needed)")
-                                                .font(.body)
-                                                .fontWeight(.semibold)
-                                                .foregroundColor(Color(UIColor.white))
-                                                .padding(2)
-                                                .frame(minWidth: 35)
-                                                .background(Color.blue)
-                                                .overlay(
-                                                    Capsule(style: .circular)
-                                                        .stroke(Color(UIColor.secondaryLabel),
-                                                                lineWidth: 0.75)
-                                            )
-                                                .clipShape(Capsule())
-                                                .animation(.easeInOut)
-                                                .onTapGesture {
-                                                    if stockItem.needed > 1 {
-                                                        stockItem.needed = stockItem.needed - 1
-                                                    } else {
-                                                        stockItem.needResupply = false
-                                                    }
-                                            }
-                                        }
-                                    }
-
-
-
-
-//                                            .onTapGesture {
-//                                                stockItem.needed! -= 1
-//                                        }
-
-//                                        ResupplyView(need: stockItem.needed)
-//                                            .transition(.scale)
-//                                    }
-                                } //: HSTACK    }
+                                itemRow (for: stockItem)
                             } //: FOREACH
                                 .onDelete(perform: self.deleteStockItem)
                         } //: SECTION
@@ -172,6 +111,70 @@ struct ContentView: View {
     }
 
     // MARK: - FUNCTIONS
+
+    private func itemRow(for stockItem: StockItem) -> some View {
+        Group {
+            HStack  {
+                Button(action: {}) {
+                    Image(systemName: "plus.circle")
+                        .foregroundColor(stockItem.needResupply ? Color(UIColor.blue) : Color(.secondaryLabel))
+                        .rotationEffect(.degrees(stockItem.needResupply ? 90 : 0))
+                        .scaleEffect(stockItem.needResupply ? 1.5 : 1)
+                        .animation(.easeInOut)
+                        .onTapGesture {
+                            if !stockItem.needResupply {
+                                stockItem.needResupply = true
+                            }
+                            if !((stockItem.needed) == stockItem.full) {
+                                stockItem.needed = stockItem.needed + 1
+                            }
+                    }
+                }
+                VStack(alignment: .leading){
+                    Text(stockItem.name ?? "Unknown")
+                        .fontWeight(.bold)
+                        .font(.headline)
+//                        .padding(.horizontal, 7)
+                    HStack {
+//                        Text("\(stockItem.full)")
+                        Text(stockItem.category ?? "Unknown")
+                    }
+                    .foregroundColor(Color(UIColor.secondaryLabel))
+ 
+//                    TextCapsuleView(tag: stockItem.category ?? "Unknown")
+                }
+
+                Spacer()
+
+                if stockItem.needResupply {
+                    Button(action:{}) {
+                        Text("\(stockItem.needed)")
+                            .font(.body)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color(UIColor.white))
+                            .padding(2)
+                            .frame(minWidth: 35)
+                            .background(Color.blue)
+                            .overlay(
+                                Capsule(style: .circular)
+                                    .stroke(Color(UIColor.secondaryLabel),
+                                            lineWidth: 0.75)
+                        )
+                            .clipShape(Capsule())
+                            .animation(.easeInOut)
+                            .onTapGesture {
+                                if stockItem.needed > 0 {
+                                    stockItem.needed = stockItem.needed - 1
+                                } else {
+                                    stockItem.needResupply = false
+                                }
+                        }
+                    }
+                }
+            } //: HSTACK
+        }//: Group
+    }//: itemRow
+
 
     private func deleteStockItem(at offsets: IndexSet) {
         for index in offsets {

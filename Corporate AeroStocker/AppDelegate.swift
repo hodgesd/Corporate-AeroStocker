@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var category: String
         var compartment: String
         var full: String
+        
 //        var need: Int16
     }
 
