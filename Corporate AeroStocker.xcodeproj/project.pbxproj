@@ -11,6 +11,7 @@
 		240DB17C2493F182004AC47A /* TextCapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240DB17B2493F181004AC47A /* TextCapsuleView.swift */; };
 		240DB18124944657004AC47A /* PreloadedDataMac.plist in Resources */ = {isa = PBXBuildFile; fileRef = 240DB18024944656004AC47A /* PreloadedDataMac.plist */; };
 		2412F5DD249E94B400BA49F3 /* ResupplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2412F5DC249E94B400BA49F3 /* ResupplyView.swift */; };
+		2433333E24A24AA5000F849B /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2433333D24A24AA5000F849B /* AddItemView.swift */; };
 		244C74C2248D50CC0052012C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C74C1248D50CC0052012C /* AppDelegate.swift */; };
 		244C74C4248D50CC0052012C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C74C3248D50CC0052012C /* SceneDelegate.swift */; };
 		244C74C7248D50CC0052012C /* Corporate_AeroStocker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 244C74C5248D50CC0052012C /* Corporate_AeroStocker.xcdatamodeld */; };
@@ -18,7 +19,6 @@
 		244C74CB248D50D40052012C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244C74CA248D50D40052012C /* Assets.xcassets */; };
 		244C74CE248D50D40052012C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 244C74CD248D50D40052012C /* Preview Assets.xcassets */; };
 		244C74D1248D50D40052012C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 244C74CF248D50D40052012C /* LaunchScreen.storyboard */; };
-		244C74DA248D5B020052012C /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C74D9248D5B020052012C /* AddItemView.swift */; };
 		244C74DC248D68A60052012C /* PickerBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244C74DB248D68A50052012C /* PickerBinding.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +27,7 @@
 		240DB17B2493F181004AC47A /* TextCapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCapsuleView.swift; sourceTree = "<group>"; };
 		240DB18024944656004AC47A /* PreloadedDataMac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PreloadedDataMac.plist; path = ../../../../../../Downloads/PreloadedDataMac.plist; sourceTree = "<group>"; };
 		2412F5DC249E94B400BA49F3 /* ResupplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResupplyView.swift; sourceTree = "<group>"; };
+		2433333D24A24AA5000F849B /* AddItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddItemView.swift; path = ../../../../.Trash/AddItemView.swift; sourceTree = "<group>"; };
 		244C74BE248D50CC0052012C /* Corporate AeroStocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Corporate AeroStocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		244C74C1248D50CC0052012C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		244C74C3248D50CC0052012C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,7 +37,6 @@
 		244C74CD248D50D40052012C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		244C74D0248D50D40052012C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		244C74D2248D50D40052012C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		244C74D9248D5B020052012C /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		244C74DB248D68A50052012C /* PickerBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerBinding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,7 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				244C74C8248D50CC0052012C /* ContentView.swift */,
-				244C74D9248D5B020052012C /* AddItemView.swift */,
+				2433333D24A24AA5000F849B /* AddItemView.swift */,
 				244C74DB248D68A50052012C /* PickerBinding.swift */,
 				240DB1792491CAD5004AC47A /* EmptyListView.swift */,
 				240DB17B2493F181004AC47A /* TextCapsuleView.swift */,
@@ -139,7 +139,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Derrick Hodges";
 				TargetAttributes = {
 					244C74BD248D50CC0052012C = {
@@ -185,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				244C74C2248D50CC0052012C /* AppDelegate.swift in Sources */,
+				2433333E24A24AA5000F849B /* AddItemView.swift in Sources */,
 				244C74DC248D68A60052012C /* PickerBinding.swift in Sources */,
 				240DB17A2491CAD5004AC47A /* EmptyListView.swift in Sources */,
 				244C74C4248D50CC0052012C /* SceneDelegate.swift in Sources */,
@@ -192,7 +193,6 @@
 				2412F5DD249E94B400BA49F3 /* ResupplyView.swift in Sources */,
 				240DB17C2493F182004AC47A /* TextCapsuleView.swift in Sources */,
 				244C74C7248D50CC0052012C /* Corporate_AeroStocker.xcdatamodeld in Sources */,
-				244C74DA248D5B020052012C /* AddItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +236,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -296,6 +297,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

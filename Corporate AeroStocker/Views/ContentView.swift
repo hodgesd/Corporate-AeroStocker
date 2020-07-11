@@ -36,7 +36,6 @@ struct ContentView: View {
 
     var tempNeeded: Int16 = 7
 
-
     // MARK: - BODY
 
     var body: some View {

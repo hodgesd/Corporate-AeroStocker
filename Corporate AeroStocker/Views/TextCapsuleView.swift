@@ -13,19 +13,22 @@ struct TextCapsuleView: View {
 
 
     var body: some View {
-        Text(tag)
-            .font(.caption)
-            .foregroundColor(Color(UIColor.secondaryLabel))
-            .padding(3)
-            .frame(minWidth: 62)
-            .overlay(
-                Capsule().stroke(Color(UIColor.secondaryLabel), lineWidth: 0.75)
-        )    }
+        VStack {
+            Text(tag)
+                .font(.caption)
+                .foregroundColor(Color(UIColor.secondaryLabel))
+                .padding(.horizontal, 2)
+                //            .frame(minWidth: 62)
+                .overlay(
+                    Capsule().stroke(Color(UIColor.secondaryLabel), lineWidth: 0.75)
+            )
+        }
+    }
 }
 
 struct TextCapsuleView_Previews: PreviewProvider {
     static var previews: some View {
-        TextCapsuleView(tag: "Beverages")
+        TextCapsuleView(tag: "Snacks")
         
     }
 }
