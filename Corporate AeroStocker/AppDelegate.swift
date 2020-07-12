@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var category: String
         var compartment: String
         var full: String
+        var count: String
         
 //        var need: Int16
     }
@@ -80,6 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         itemObject.name = newItem.name
                         itemObject.category = newItem.category
                         itemObject.compartment = newItem.compartment
+                        itemObject.count = newItem.count
                         itemObject.id = UUID()
                         itemObject.needResupply = false
                         itemObject.full = Int16(newItem.full) ?? 9

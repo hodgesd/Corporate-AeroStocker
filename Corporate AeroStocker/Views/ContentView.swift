@@ -21,7 +21,7 @@ struct ContentView: View {
 
     @State private var showingAddItemView: Bool = false
     @State private var animatingButton: Bool = false
-//    @State private var needItem: Bool = false
+    //    @State private var needItem: Bool = false
 
 
     /// Groups stockitems by Category then sorts within each category by their name.
@@ -48,23 +48,23 @@ struct ContentView: View {
 
                                 itemRow (for: stockItem)
                             } //: FOREACH
-                                .onDelete(perform: self.deleteStockItem)
+                            .onDelete(perform: self.deleteStockItem)
                         } //: SECTION
                     } //: FOREACH
                 } //: LIST
-                    .navigationBarTitle("Inventory", displayMode: .inline)
-                    .navigationBarItems(
-                        leading: EditButton(),
-                        trailing:
+                .navigationBarTitle("Inventory", displayMode: .inline)
+                .navigationBarItems(
+                    leading: EditButton(),
+                    trailing:
                         Button(action: {
                             // Show add item view
                             self.showingAddItemView.toggle()
                         }) {
                             Image(systemName: "plus")
                         } // :ADD BUTTON
-                            .sheet(isPresented: $showingAddItemView) {
-                                AddItemView().environment(\.managedObjectContext, self.managedObjectContext)
-                                    .environment(\.managedObjectContext.automaticallyMergesChangesFromParent, true)
+                        .sheet(isPresented: $showingAddItemView) {
+                            AddItemView().environment(\.managedObjectContext, self.managedObjectContext)
+                                .environment(\.managedObjectContext.automaticallyMergesChangesFromParent, true)
                         }
                 )
                 // MARK: - NO STOCK ITEMS
@@ -72,8 +72,8 @@ struct ContentView: View {
                 //                    EmptyListView()
                 //                }
             } //: ZSTACK
-                .sheet(isPresented: $showingAddItemView) {
-                    AddItemView().environment(\.managedObjectContext, self.managedObjectContext)
+            .sheet(isPresented: $showingAddItemView) {
+                AddItemView().environment(\.managedObjectContext, self.managedObjectContext)
             }
             .overlay(
                 ZStack {
@@ -99,14 +99,14 @@ struct ContentView: View {
                             .background(Circle().fill(Color("ColorBase")))
                             .frame(width: 48, height: 48, alignment: .center)
                     } //: BUTTON
-                        .onAppear(perform: {
-                            self.animatingButton.toggle()
-                        })
+                    .onAppear(perform: {
+                        self.animatingButton.toggle()
+                    })
                 } //: ZSTACK
-                    .padding(.bottom, 15)
-                    .padding(.trailing, 15)
+                .padding(.bottom, 15)
+                .padding(.trailing, 15)
                 , alignment: .bottomTrailing
-            )
+            ) //: OVERLAY
         } //: NAVIGATION
     }
 
@@ -128,20 +128,17 @@ struct ContentView: View {
                             if !((stockItem.needed) == stockItem.full) {
                                 stockItem.needed = stockItem.needed + 1
                             }
-                    }
+                        }
                 }
                 VStack(alignment: .leading){
                     Text(stockItem.name ?? "Unknown")
                         .fontWeight(.bold)
                         .font(.headline)
-//                        .padding(.horizontal, 7)
                     HStack {
-//                        Text("\(stockItem.full)")
                         Text(stockItem.category ?? "Unknown")
+                        Text("|  \(stockItem.full) \(stockItem.count ?? "items")")
                     }
                     .foregroundColor(Color(UIColor.secondaryLabel))
- 
-//                    TextCapsuleView(tag: stockItem.category ?? "Unknown")
                 }
 
                 Spacer()
@@ -159,7 +156,7 @@ struct ContentView: View {
                                 Capsule(style: .circular)
                                     .stroke(Color(UIColor.secondaryLabel),
                                             lineWidth: 0.75)
-                        )
+                            )
                             .clipShape(Capsule())
                             .animation(.easeInOut)
                             .onTapGesture {
@@ -168,13 +165,12 @@ struct ContentView: View {
                                 } else {
                                     stockItem.needResupply = false
                                 }
-                        }
-                    }
-                }
+                            }
+                    }//: Button
+                }//: IF
             } //: HSTACK
         }//: Group
     }//: itemRow
-
 
     private func deleteStockItem(at offsets: IndexSet) {
         for index in offsets {
@@ -185,8 +181,6 @@ struct ContentView: View {
                 try managedObjectContext.save()
             } catch {
                 print (error)
-
-
             }
         }
     }
